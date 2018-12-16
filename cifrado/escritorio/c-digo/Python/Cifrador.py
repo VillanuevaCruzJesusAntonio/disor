@@ -7,34 +7,33 @@ from Cifrados.cifradoTGrupo import CifradoTGrupo
 class Cifrador:
 
     def __init__(self):
-        self.text = TextoPlano("")
-        self.cifC = CifradoCesar("", 3)
-        self.cifTG = CifradoTGrupo("", 3)
-        self.cifTI = CifradoTInversa("")
-        self.palabra_aux = ""
+        self.textoEntrada = TextoPlano("")
+        self.cCesar = CifradoCesar("", 3)
+        self.cTG = CifradoTGrupo("", 3)
+        self.cTI = CifradoTInversa("")
+        self.array = ""
 
     def datoExternoTXT(self, nuevo ,val ,val2):
-        self.palabra_aux = nuevo
-        resp = TextoPlano(nuevo)
-        self.text.diference(nuevo)
+        self.array = nuevo
+        estText = TextoPlano(nuevo)
+        self.textoEntrada.difDimensiones(nuevo)
 
-        self.ActualizarcifradoRev(resp,nuevo)
-        self.ActualizarcifradoCesar(nuevo ,val)
-        self.ActualizarcifradoRevGroup(nuevo ,val2)
+        self.evenCifradoTInversa(estText,nuevo)
+        self.evenCifradoCesar(nuevo ,val)
+        self.evenCifradoTGrupo(nuevo ,val2)
 
-        self.text.refresh(nuevo)
+        self.textoEntrada.refresh(nuevo)
 
-    def ActualizarcifradoRev(self ,resp,txt):
-        if self.text.backOne(resp):
-            self.cifTI.back()
-        elif self.text.step(resp):
-            self.cifTI.front(self.text.textoDiferen)
+    def evenCifradoTInversa(self ,estText,txt):
+        if self.textoEntrada.backOne(estText):
+            self.cTI.back()
+        elif self.textoEntrada.step(estText):
+            self.cTI.front(self.textoEntrada.textoDiferen)
         else:
-            self.cifTI.cifra(txt)
+            self.cTI.cifra(txt)
 
-    def ActualizarcifradoCesar(self ,txt,salto):
-        self.cifC.cifrar(txt,salto)
+    def evenCifradoCesar(self ,txt,salto):
+        self.cCesar.cifrar(txt,salto)
 
-    def ActualizarcifradoRevGroup(self ,txt,group):
-        self.cifTG.cifrar(txt,group)
-
+    def evenCifradoTGrupo(self ,txt,group):
+        self.cTG.cifrar(txt,group)
