@@ -15,11 +15,16 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::on_textEntrada_modificationChanged(bool arg1){
+    QString text = ui->textEntrada->toPlainText();
+    int sal = ui->numSaltos->value();
+    int grup = ui->numGrupos->value();
     
-    //QString textoPlano=ui->plainTextEdit_4->toPlainText();
-    //b.append(cifradoCesar(ui->textEntrada->toPlainText(),ui->numSaltos->value(),abc,a));
-    //buffered = cifradoCesar(ui->textEntrada->toPlainText(),ui->numSaltos->value(),abc,buffer);
-    //ui->textCesar->setPlainText(buffered);
-    ui->textEntrada->toPlainText();
-    ui->textCesar->setPlainText(cifradoCesar(ui->textEntrada->toPlainText(),ui->numSaltos->value(),abc,a));
+    Cesar cifrarTexto (text,sal);
+    Inverso cifrarInverso(text);
+    IGrupal cifrarIGrupal(text,grup);
+
+    
+    ui->textCesar->setPlainText(cifrar);
+    ui->textInversa->setPlainText(cifrar());
+    ui->textIGrupo->setPlainText(cifrar())
 }
