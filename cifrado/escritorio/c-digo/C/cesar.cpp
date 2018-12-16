@@ -1,7 +1,6 @@
-#include "cesar.hpp"
+Inverso#include "cesar.hpp"
 
-Cesar::Cesar(string textEntrada,int posicion)
-{
+Cesar::Cesar(string textEntrada,int posicion){
     this->texto=textEntrada;
     this->indicePos=posicion;
 }
