@@ -37,12 +37,9 @@ string Cesar::decifrar(){
     for(indice=0;indice<texto.length();indice++){
         if(texto.at(indice)>96 && texto.at(indice)<123)
             texto.at(indice) -= 32;
-        //Paso las letras minusculas a mayusculas
 
         if(texto.at(indice)<64 && texto.at(indice)>91)
             textoDesifrado+=texto.at(indice);
-        //Si el caracter actual no es una letra se
-        //deja sin cifrar 
 
         else{
             dimension = letras.find(texto.at(indice));
@@ -50,10 +47,6 @@ string Cesar::decifrar(){
                 movimiento = letras.length()+((int)dimension-indicePos);
             else
                 movimiento = (int)dimension-indicePos;
-            //Revision para evitar que el valor quede
-            //fuera de rango, como la resta general un
-            //valor negativo lo sumo al tamaño del
-            //alfabeto para que avanze hacia atras
 
             textoDesifrado.append(letras,movimiento,1);
         }
